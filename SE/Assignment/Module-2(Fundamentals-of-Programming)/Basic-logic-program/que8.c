@@ -1,5 +1,5 @@
 /*
-Que8. Find circumference of Rectangle formula : C = 4 * a
+Que8. Find circumference of Rectangle formula : C = 2(a + b)
 */
 
 #include <stdio.h>
