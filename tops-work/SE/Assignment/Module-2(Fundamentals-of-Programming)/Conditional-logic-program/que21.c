@@ -1,0 +1,3 @@
+/*
+Que21. Write a program in C to read any Month Number in integer and display the number of days for this month.
+*/
