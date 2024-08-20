@@ -3,11 +3,6 @@ Que20. Write a C program that uses a recursive function to find the
 Greatest Common Divisor (GCD) of two numbers.
 */
 
-/*
-10] Write a function in C that takes an array of integers and its size
-as input and returns the sum of all elements in the array.
-*/
-
 #include <stdio.h>
 
 int main()

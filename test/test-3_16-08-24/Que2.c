@@ -19,9 +19,13 @@ int main() {
         {
             vow_counter++;
         }
-        else
+        else if((str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))
         {
             cons_counter++;
+        }
+        else
+        {
+            continue;
         }
     }
     printf("Number of vowels %d\n",vow_counter);
