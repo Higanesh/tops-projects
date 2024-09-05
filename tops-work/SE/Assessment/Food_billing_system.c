@@ -30,8 +30,9 @@ int amount(int qty, int rate)
 }
 
 int main() {
-    int qty, ch; // Variables to store quantity and user's choice
-    char choice; // Variable to store user's decision to continue or not
+    char buffer[100]; // Buffer to hold input as a string
+    int qty, menu_choice; // Variables to store quantity and user's choice
+    char want_more; // Variable to store user's decision to continue or not
     
     do {
         // Display the menu
@@ -48,43 +49,61 @@ int main() {
         
         // Prompt user to select a meal
         printf("Select your meal\n");
-        scanf("%d", &ch);
-        
+        //scanf("%d", &menu_choice);
+
+        //Read input as a string
+        if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+            // Check if input is an integer
+            if (sscanf(buffer, "%d", &menu_choice) != 1) {
+                printf("Invalid input! Please enter a valid number.\n");
+                //continue;
+            }
+            
         // Display the selected meal
-        switch(ch)
-        {
-            case 1: printf("You chose PIZZA\n");
-                    break;
-            case 2: printf("You chose BURGER\n");
-                    break;
-            case 3: printf("You chose DOSA\n");
-                    break;
-            case 4: printf("You chose IDLI\n");
-                    break;
-            case 5: printf("You chose SAMOSA\n");
-                    break;
-            default: printf("You have selected a wrong item\n");
-                     break;
-        }
-        
+            switch(menu_choice)
+            {
+                case 1: printf("You chose PIZZA\n");
+                        break;
+                case 2: printf("You chose BURGER\n");
+                        break;
+                case 3: printf("You chose DOSA\n");
+                        break;
+                case 4: printf("You chose IDLI\n");
+                        break;
+                case 5: printf("You chose SAMOSA\n");
+                        break;
+                default: printf("You have selected a wrong item\n");
+                        break;
+            }
+        }   
         // If a valid choice is made, prompt user for quantity and calculate the amount
-        if(ch <= sizeof(item) / sizeof(item[0]) && ch > 0)
+        if(menu_choice <= sizeof(item) / sizeof(item[0]) && menu_choice > 0)
         {
             printf("Enter Quantity\n");
-            scanf("%d", &qty);  
+            scanf("%d", &qty);
+            if(qty <= 0)
+            {
+                printf("You have enter wrong quantity,Please enter quantity more than 0\n");
+            } 
+            else{
+                    // Add the calculated amount to the total
+                    amt += amount(qty, rate[menu_choice-1]);
+        
+            }
         }
         
-        // Add the calculated amount to the total
-        amt += amount(qty, rate[ch-1]);
         
         // Display the current total amount
         printf("Amount: %d\n", amt);
         
         // Ask if the user wants to add something else
         printf("Do you want to add something else (Y/N)?\n");
-        scanf(" %c", &choice);
-        
-    } while(choice == 'y' || choice == 'Y'); // Continue if the user wants to add more items
+        scanf(" %c", &want_more);
+
+        // Clear the input buffer to handle extra characters (if any)
+        while(getchar() != '\n');
+          
+    } while(want_more == 'y' || want_more == 'Y'); // Continue if the user wants to add more items
     
     // Display the grand total
     printf("Grand total : %d", amt);

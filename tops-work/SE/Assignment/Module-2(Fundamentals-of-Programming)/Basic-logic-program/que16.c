@@ -20,7 +20,6 @@ int main() {
     for(int i = 0; i <= len; i++){
         if(country[i] == ' ')
         {
-            
             printf("%c",toupper(country[i+1]));
         }
     }

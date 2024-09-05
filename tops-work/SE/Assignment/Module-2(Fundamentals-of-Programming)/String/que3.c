@@ -8,7 +8,6 @@ Que3. Write a program in C to print individual characters of a string in reverse
 int main()
 {
     char str[20];
-    char temp;
     char reverse_str[20];
     printf("Enter any string for reverse operation\n");
     scanf("%s",&str);

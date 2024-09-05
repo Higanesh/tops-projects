@@ -8,8 +8,6 @@ int main() {
     int n, current = 1;
     printf("Enter the number of terms: ");
     scanf("%d", &n);
-    
-    // Print the first term
     printf("%d ", current);
 
     for(int i = 1; i < n; i++) {

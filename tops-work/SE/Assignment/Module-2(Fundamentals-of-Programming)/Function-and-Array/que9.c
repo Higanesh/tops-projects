@@ -5,47 +5,40 @@ Que9. WAP to show difference between Structure and Union.
 #include <stdio.h>
 #include <string.h>
 
-// Define a structure
 struct Person {
     char name[50];
     int age;
     float height;
 };
 
-// Define a union
 union Data {
-    int intValue;
-    float floatValue;
-    char charValue;
+    int Value1;
+    float Value2;
+    char Value3;
 };
 
 int main() {
-    // Initialize and print structure members
+    
     struct Person person1;
-    strcpy(person1.name, "Alice");
-    person1.age = 30;
-    person1.height = 5.6;
+    strcpy(person1.name, "Ganesh");
+    person1.age = 24;
+    person1.height = 5.2;
 
     printf("Structure:\n");
     printf("Name: %s\n", person1.name);
     printf("Age: %d\n", person1.age);
     printf("Height: %.2f\n", person1.height);
 
-    // Initialize and print union members
     union Data data1;
     
-    data1.intValue = 10;
-    printf("\nUnion (when storing intValue):\n");
-    printf("intValue: %d\n", data1.intValue);
+    data1.Value1 = 10;
+    printf("Integer Value: %d\n", data1.Value1);
     
-    data1.floatValue = 5.7;
-    printf("floatValue: %.2f\n", data1.floatValue);
+    data1.Value2 = 5.7;
+    printf("Float Value: %.2f\n", data1.Value2);
     
-    data1.charValue = 'A';
-    printf("charValue: %c\n", data1.charValue);
-
-    // Print the value of intValue after storing charValue
-    printf("intValue after storing charValue: %d\n", data1.intValue);
+    data1.Value3 = 'A';
+    printf("Character Value: %c\n", data1.Value3);
 
     return 0;
 }
