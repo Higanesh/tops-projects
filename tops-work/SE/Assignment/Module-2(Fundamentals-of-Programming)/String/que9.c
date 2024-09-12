@@ -13,7 +13,6 @@ int main() {
     int maxFreq = 0;            // Variable to store the maximum frequency
     char maxChar;               // Variable to store the character with maximum frequency
 
-    // Input the string
     printf("Enter a string: ");
     fgets(str, sizeof(str), stdin);
 
