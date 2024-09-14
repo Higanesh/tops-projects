@@ -13,19 +13,52 @@ class Employee{
         string emp_id;
         double salary;
     public:
-        Employee(){
-
+        Employee(string name,string emp_id,double salary){
+            this->name = name;
+            this->emp_id = emp_id;
+            this->salary = salary;
         }
 
-        double calculate_salary(){
+        void setSalaryBasedOnPerformance(char performanceRating){
 
+            switch (performanceRating)
+            {
+            case 'A': salary += salary * 0.20;
+                    break;
+            case 'B': salary += salary * 0.10;
+                    break;
+            case 'C': salary += salary * 0.05;
+                    break;
+            case 'D': salary;
+                    break;
+           default:
+                cout<<"Invalid performance rating! No salary changes made."<<endl;
+                return;
+            }
+            cout<<"Salary updated based on performance rating '"<<performanceRating<<"'."<< endl;
+        }
+
+        void display(){
+            cout<<"Employee Name: "<<name<<endl;
+            cout<<"Employee ID: "<<emp_id<<endl;
+            cout<<"Employee Salary: Rs."<<salary<<endl;
         }
 };
 
 int main(){
 
-    Employee e;
-    string nm,e_id,sal;
+    Employee e("Ganesh","1234",16000);
     
+    cout<<"Initial employee details:"<<endl;
+    e.display();
+
+    char rating;
+    cout<<"\nEnter performance rating (A, B, C, D): ";
+    cin>>rating;
+
+    e.setSalaryBasedOnPerformance(rating);
+
+    cout<<"Updated employee details:"<<endl;
+    e.display();
     return 0;
 }

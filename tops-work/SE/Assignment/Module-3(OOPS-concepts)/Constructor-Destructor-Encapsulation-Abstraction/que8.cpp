@@ -65,7 +65,6 @@ public:
         }
         s_add.show_add();
     }
-
 };
 
 int main(){
