@@ -1,5 +1,5 @@
 /*
-Que2. Create table given below: Employee and IncentiveTable
+Que2. Create table given below: Employee and Incentive Table
 */
 
 --1. Create table query for Employee table
@@ -149,7 +149,7 @@ alary;
 | Banking    |        1000000 |
 +------------+----------------+
 
---8. Select first_name, incentive amount from employee and incentives table forthose employees who have incentives and incentive amount greater than 3000
+--8. Select first_name, incentive amount from employee and incentives table for those employees who have incentives and incentive amount greater than 3000
 
 
 --9. Create After Insert trigger on Employee table which insert records in view table
