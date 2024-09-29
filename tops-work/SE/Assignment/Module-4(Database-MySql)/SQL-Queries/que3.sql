@@ -76,6 +76,17 @@ mysql> select * from customer;
 
 --1. All orders for more than $1000.
 
+mysql> select ord_no,purch_amt from orders where purch_amt > 1000;
++--------+-----------+
+| ord_no | purch_amt |
++--------+-----------+
+|  70003 |    2480.4 |
+|  70005 |    2400.6 |
+|  70008 |      5760 |
+|  70010 |   1983.43 |
+|  70013 |    3045.6 |
++--------+-----------+
+
 --2. Names and cities of all salespeople in London with commission above 0.12
 
 mysql> select Sname,City from salesperson where city = "London" AND Comm > 0.12;

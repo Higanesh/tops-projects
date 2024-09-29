@@ -151,6 +151,58 @@ alary;
 
 --8. Select first_name, incentive amount from employee and incentives table for those employees who have incentives and incentive amount greater than 3000
 
+mysql> select employee.first_name,incentive.incentive_amount
+    -> from employee
+    -> inner join incentive
+    -> on employee.employee_id = incentive.employee_ref_id;
++------------+------------------+
+| first_name | incentive_amount |
++------------+------------------+
+| John       | 5000             |
+| Michael    | 3000             |
+| Roy        | 4000             |
+| John       | 4500             |
+| Michael    | 3500             |
++------------+------------------+
 
 --9. Create After Insert trigger on Employee table which insert records in view table
 
+mysql> DELIMITER //
+mysql> CREATE TRIGGER add_new_employee
+    -> AFTER INSERT ON employee
+    -> FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO view (employee_id, first_name, last_name, salary, joining_date, department)
+    -> VALUES
+    -> (NEW.employee_id,NEW.first_name,NEW.last_name,NEW.salary,NEW.joining_date,NEW.department);
+    -> END
+    -> //
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into employee (first_name,last_name,salary,joining_date,department)
+    -> values
+    -> ("Sagar","Wankhade",140000,"01-JUL-21 12:00:00 AM","IT");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------------+------------+-----------+---------+-----------------------+------------+
+| Employee_id | First_name | Last_name | Salary  | Joining_date          | Department |
++-------------+------------+-----------+---------+-----------------------+------------+
+|           1 | John       | Abraham   | 1000000 | 01-JUL-21 12:00:00 AM | Banking    |
+|           2 | Michael    | Clarke    |  800000 | 01-JUL-21 12:00:00 AM | Insurance  |
+|           3 | Roy        | Thomas    |  700000 | 01-JUL-21 12:00:00 AM | Banking    |
+|           4 | Tom        | Jose      |  600000 | 01-JUL-21 12:00:00 AM | Insurance  |
+|           5 | Jerry      | Pinto     |  650000 | 01-JUL-21 12:00:00 AM | Insurance  |
+|           6 | Philip     | Mathew    |  750000 | 01-JUL-21 12:00:00 AM | Services   |
+|           7 | TestName1  | 123       |  650000 | 01-JUL-21 12:00:00 AM | Services   |
+|           8 | TestName2  | Lname%    |  600000 | 01-JUL-21 12:00:00 AM | Insurance  |
+|           9 | Sagar      | Wankhade  |  140000 | 01-JUL-21 12:00:00 AM | IT         |
++-------------+------------+-----------+---------+-----------------------+------------+
+
+mysql> select * from VIEW;
++-------------+------------+-----------+--------+--------------+------------+---------+---------------------+
+| employee_id | first_name | last_name | salary | joining_date | department | view_id | view_date           |
++-------------+------------+-----------+--------+--------------+------------+---------+---------------------+
+|           9 | Sagar      | Wankhade  | 140000 | 01-07-2021   | IT         |       1 | 2024-09-29 15:51:00 |
++-------------+------------+-----------+--------+--------------+------------+---------+---------------------+
+1 row in set (0.00 sec)

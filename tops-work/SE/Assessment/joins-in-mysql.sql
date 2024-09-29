@@ -132,5 +132,31 @@ mysql> select * from customer;
 |        3007 | Brad Davis     | New York   |   200 |        5001 |
 |        3008 | Julian Green   | London     |   300 |        5002 |
 |        3009 | Geoff Cameron  | Berlin     |   100 |        5003 |
-+-------------+----------------+------------+-------+-------------+
++-------------+----------------+------------+-------+-------------+ 
 
+                                |-----------------|
+                                |  Table : Output |
+                                |-----------------|
+
+
+mysql> select customer.cust_name,customer.city,salesman.salesman_id,salesman.commission
+    -> from customer
+    -> left join salesman on customer.salesman_id = salesman.salesman_id
+    -> union
+    -> select customer.cust_name,customer.city,salesman.salesman_id,salesman.commission
+    -> from customer
+    -> right join salesman on customer.salesman_id = salesman.salesman_id
+    -> ;
++----------------+------------+-------------+------------+
+| cust_name      | city       | salesman_id | commission |
++----------------+------------+-------------+------------+
+| Brad Guzan     | London     |        5005 |       0.11 |
+| Nick Rimando   | New York   |        5001 |       0.15 |
+| Jozy Altidor   | Moscow     |        5007 |       0.13 |
+| Fabian Johnson | Paris      |        5006 |       0.14 |
+| Graham Zusi    | California |        5002 |       0.13 |
+| Brad Davis     | New York   |        5001 |       0.15 |
+| Julian Green   | London     |        5002 |       0.13 |
+| Geoff Cameron  | Berlin     |        5003 |       0.12 |
++----------------+------------+-------------+------------+
+8 rows in set (0.18 sec)
