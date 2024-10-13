@@ -21,6 +21,5 @@ int main()
        sum += digit[j];
     }
     printf("Sum of %d number is %d",real_number,sum);
-   
     return 0;
 }

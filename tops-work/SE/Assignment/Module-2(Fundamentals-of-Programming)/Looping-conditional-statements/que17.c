@@ -27,10 +27,8 @@ int main()
             odd_counter++;
         }
         j++;
-    }
-    
+    }   
     printf("Even numbers are %d\n",even_counter);
     printf("Odd numbers are %d\n",odd_counter);
-    
     return 0;
 }

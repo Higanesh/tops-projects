@@ -15,6 +15,5 @@ int main()
         no--;
     }
     printf("%d",fact);
-    
     return 0;
 }

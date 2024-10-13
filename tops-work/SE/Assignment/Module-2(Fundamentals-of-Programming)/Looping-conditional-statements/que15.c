@@ -12,4 +12,5 @@ int main(){
     count++;
 }
 printf("%d",sum);
+return 0;
 }

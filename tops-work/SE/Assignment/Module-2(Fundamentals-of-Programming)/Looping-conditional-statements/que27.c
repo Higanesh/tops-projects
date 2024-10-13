@@ -9,7 +9,6 @@ int main() {
     printf("Enter the number of terms: ");
     scanf("%d", &n);
     printf("%d ", current);
-
     for(int i = 1; i < n; i++) {
         if(i % 3 == 1) {
             current *= 2;
@@ -18,10 +17,8 @@ int main() {
         } else {
             current *= 1;
         }
-        
         printf("%d ", current);
     }
-
     printf("\n");
     return 0;
 }

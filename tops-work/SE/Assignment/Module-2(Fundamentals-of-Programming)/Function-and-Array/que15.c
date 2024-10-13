@@ -7,14 +7,14 @@ Que15. Store 5 numbers in array and sort it in ascending order
 int main() {
     
     int array[5];
-    int temp,size = 5;
+    int temp;
     printf("Enter array elements\n");
-    for(int i = 0; i < size; i++)
+    for(int i = 0; i < 5; i++)
     {
          scanf("%d",&array[i]);
     }
-        for(int i = 0; i < size -1; i++){
-            for(int j = 0; j < size - 1; j++)
+        for(int i = 0; i < 5 -1; i++){
+            for(int j = 0; j < 5 - 1; j++)
             {
                  if(array[j] > array[j+1])
                 {
@@ -25,7 +25,7 @@ int main() {
             }
         }
     printf("sorted array\n");
-    for(int k = 0; k < size; k++)
+    for(int k = 0; k < 5; k++)
     {
         printf("%d\n",array[k]);
     }

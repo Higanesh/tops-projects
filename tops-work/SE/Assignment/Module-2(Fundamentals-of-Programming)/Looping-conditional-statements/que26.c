@@ -7,7 +7,6 @@ Que26. 1/2 - 2/3 + 3/4 - 4/5 + 5/6 .......... n
 int main() {
     int n;
     double sum = 0.0;
-
     printf("Enter the number of terms (n): ");
     scanf("%d", &n);
     for(int i = 1; i <= n; i++) {
@@ -18,6 +17,5 @@ int main() {
         }
     }
     printf("The result of the series is: %lf\n", sum);
-
     return 0;
 }

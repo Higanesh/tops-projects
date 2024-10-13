@@ -11,8 +11,6 @@ int main()
     int counter = 1;
     printf("Enter any string\n");
     fgets(str, sizeof(str), stdin);
-    // Check if the input ends with a newline and remove it
-    str[strcspn(str, "\n")] = '\0';
     printf("%s\n",str);
     int i = 0;
     while(str[i] != '\n')

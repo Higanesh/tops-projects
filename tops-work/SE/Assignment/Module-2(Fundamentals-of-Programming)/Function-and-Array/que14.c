@@ -47,12 +47,8 @@ int main() {
         {77,88,99,0}
     };
     
-    // printf("%d", matrix[1][1]);
-    
     int len_of_row = sizeof(matrix1)/sizeof(matrix1[0]);
     int len_of_col = (sizeof(matrix1[0])/sizeof(matrix1[0][0]));
-    
-    // printf("Row : %d, Col : %d", len_of_row,len_of_col);
     
     printf("Matrix-1:\n");
     for(int row = 0; row<len_of_row; row++){

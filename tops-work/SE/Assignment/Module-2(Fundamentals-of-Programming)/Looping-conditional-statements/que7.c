@@ -24,6 +24,5 @@ int main()
         }
     }
     printf("Reverse number is %d\n",reverse);
-    
     return 0;
 }

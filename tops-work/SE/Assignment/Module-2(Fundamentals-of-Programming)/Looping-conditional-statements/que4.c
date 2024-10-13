@@ -19,6 +19,5 @@ int main()
         printf("\n");
         counter++;
     }
-    
     return 0;
 }

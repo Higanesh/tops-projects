@@ -19,6 +19,5 @@ int main()
     printf("Enter any no for calculate the factorial\n");
     scanf("%d",&no);
     printf("%d",factorial(no));
-    
     return 0;
 }

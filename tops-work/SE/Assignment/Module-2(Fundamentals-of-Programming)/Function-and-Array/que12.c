@@ -7,21 +7,21 @@ Que12. WAP to accept 5 students name and store it in array
 
 int main() {
     
-    int NUM_STUDENTS = 5;
-    int NAME_LENGTH = 50;
-    char studentNames[NUM_STUDENTS][NAME_LENGTH];
+    int row = 5;
+    int col = 50;
+    char studentNames[row][col];
     
-    printf("Enter the names of %d students:\n", NUM_STUDENTS);
-    for (int i = 0; i < NUM_STUDENTS; i++) {
+    printf("Enter the names of %d students:\n", row);
+    for (int i = 0; i < row; i++) {
         printf("Student %d: ", i + 1);
-        fgets(studentNames[i], NAME_LENGTH, stdin);
+        fgets(studentNames[i], col, stdin);
         int len = strlen(studentNames[i]);
         if (len > 0 && studentNames[i][len - 1] == '\n') {
             studentNames[i][len - 1] = '\0';
         }
     }
     printf("\nThe names of the students are:\n");
-    for (int i = 0; i < NUM_STUDENTS; i++) {
+    for (int i = 0; i < row; i++) {
         printf("Student %d: %s\n", i + 1, studentNames[i]);
     }
     return 0;

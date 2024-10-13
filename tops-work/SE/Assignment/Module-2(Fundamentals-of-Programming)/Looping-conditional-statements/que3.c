@@ -35,6 +35,5 @@ int main()
     printf("Odd numbers are %d\n",odd_counter);
     printf("Sum of even numbers are %d\n",even_sum);
     printf("Sum of odd numbers are %d\n",odd_sum);
-    
     return 0;
 }

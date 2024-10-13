@@ -13,46 +13,43 @@
 
 #include <stdio.h>
 
-#define N 10
-
 int main() {
-    int matrix[N][N];
-    int top = 0, bottom = N - 1, left = 0, right = N - 1;
+    int matrix[10][10];
+    int top = 0, bottom = 10 - 1, left = 0, right = 10 - 1;
     int value = 1;
 
-    while (value <= N * N) {
+    while (value <= 10 * 10) {
         // Fill top row
-        for (int i = left; i <= right && value <= N * N; i++) {
+        for (int i = left; i <= right && value <= 10 * 10; i++) {
             matrix[top][i] = value++;
         }
         top++;
 
         // Fill right column
-        for (int i = top; i <= bottom && value <= N * N; i++) {
+        for (int i = top; i <= bottom && value <= 10 * 10; i++) {
             matrix[i][right] = value++;
         }
         right--;
 
         // Fill bottom row
-        for (int i = right; i >= left && value <= N * N; i--) {
+        for (int i = right; i >= left && value <= 10 * 10; i--) {
             matrix[bottom][i] = value++;
         }
         bottom--;
 
         // Fill left column
-        for (int i = bottom; i >= top && value <= N * N; i--) {
+        for (int i = bottom; i >= top && value <= 10 * 10; i--) {
             matrix[i][left] = value++;
         }
         left++;
     }
 
     // Print the matrix
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             printf("%4d", matrix[i][j]);
         }
         printf("\n");
     }
-
     return 0;
 }

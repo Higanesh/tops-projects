@@ -13,10 +13,10 @@ int main()
     printf("Enter any number\n");
     scanf("%d",&num);
     real_num = abs(num);
-    while(num > 0)
+    while(real_num > 0)
     {
-        digit[counter] = num % 10;
-        num = num / 10;
+        digit[counter] = real_num % 10;
+        real_num = real_num / 10;
         counter++;
     }
     for(int i = 0; i < counter; i++)

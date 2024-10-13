@@ -20,9 +20,7 @@ void reverseString(char str[], int start, int end) {
 int main() {
     char str[100];
     printf("Enter a string: ");
-    //scanf("%s",str);
-    fgets(str, sizeof(str), stdin);
-    str[strcspn(str, "\n")] = '\0';
+    scanf("%s",str);
     reverseString(str, 0, strlen(str) - 1);
     printf("Reversed string: %s\n", str);
     return 0;

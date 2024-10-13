@@ -22,6 +22,5 @@ int main()
         printf("%d\n",fact);
         fact = 1;
     }
-   
     return 0;
 }

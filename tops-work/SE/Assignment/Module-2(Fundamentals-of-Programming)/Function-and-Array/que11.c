@@ -4,18 +4,16 @@ Que11. WAP to accept 5 numbers from user and display in reverse order using for 
 
 #include <stdio.h>
 
-const int SIZE = 5;
-
 int main() {
-    int numbers[SIZE];
+    int numbers[5];
     
-    printf("Enter %d numbers:\n", SIZE);
-    for (int i = 0; i < SIZE; i++) {
+    printf("Enter 5 numbers:\n");
+    for (int i = 0; i < 5; i++) {
         scanf("%d", &numbers[i]);
     }
     
     printf("Numbers in reverse order:\n");
-    for (int i = SIZE - 1; i >= 0; i--) {
+    for (int i = 5 - 1; i >= 0; i--) {
         printf("%d ", numbers[i]);
     }
     printf("\n");
