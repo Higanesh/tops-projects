@@ -1,6 +1,5 @@
-""" done
+"""done
 Que5. How will you compare two lists?
-
 Ans-> 
 Direct Equality Check (==)
 This method checks if both lists have the same elements in the exact same order.

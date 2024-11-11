@@ -1,16 +1,16 @@
-"""
+"""done
 Que62. Write a Python program to calculate surface volume and area of a cylinder
 """
 
-PI = 3.14
+import math
 
 # V=πr^2h
 def volume_of_cylinder(r,h):
-    return round((PI * r * r * h),2)
+    return round((round(math.pi,2) * r * r * h),2)
 
 # A=2πr^2+2πrh
 def area_of_cylinder(r,h):
-    return round(((2 * PI * r * r) + (2 * PI * r * h)),2)
+    return round(((2 * round(math.pi,2) * r * r) + (2 * round(math.pi,2) * r * h)),2)
 
 radius = float(input("Enter radius: "))
 height = float(input("Enter height: "))

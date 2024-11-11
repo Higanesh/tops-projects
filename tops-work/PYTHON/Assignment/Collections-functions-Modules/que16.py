@@ -1,4 +1,4 @@
-"""
+"""done
 Que16. Write a Python program to check whether a list contains a sub list
 """
 
@@ -9,7 +9,7 @@ for ele in main_list:
     if isinstance(ele,list):
          flag = 1
          print("Sublist: ",list(ele))
-
+         
 if flag == 1:
     print("Sublist is available")
 else:

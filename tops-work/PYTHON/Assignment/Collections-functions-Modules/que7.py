@@ -1,4 +1,4 @@
-"""
+"""done
 Que7. Write a Python program to remove duplicates from a list. 
 """
 
@@ -12,8 +12,5 @@ print(empty_ls)
 
 
 # you can use set also for this program
-# empty_set = set()
-# print(type(empty_set))
-# for element in elements:
-#     empty_set.add(element)
-# print(empty_set)
+
+# print(list(set(elements)))
