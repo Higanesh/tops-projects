@@ -1,4 +1,4 @@
-"""done
+"""
 Que50. Write a Python function to check whether a number is perfect or not.
 """
 # A perfect number is a positive integer that is equal to the sum of its proper divisors, excluding itself. In other words, the sum of all divisors of the number, except the number itself, equals the number.

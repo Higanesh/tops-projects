@@ -1,4 +1,4 @@
-"""done
+"""
 Que5. How will you compare two lists?
 Ans-> 
 Direct Equality Check (==)

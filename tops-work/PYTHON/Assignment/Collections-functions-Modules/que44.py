@@ -4,6 +4,7 @@ Sample data: {'1': ['a','b'], '2': ['c','d']} Expected Output:
 ac ad bc bd
 """
 
+# sample data
 sample_data = {'1': ['a','b'], '2': ['c','d'], '3': ['e','f']}
 common = list(sample_data.values())  # Get the list of all the value lists
 

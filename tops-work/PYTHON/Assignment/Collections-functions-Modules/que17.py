@@ -1,4 +1,4 @@
-"""done
+"""
 Que17. Write a Python program to split a list into different variables. 
 """
 

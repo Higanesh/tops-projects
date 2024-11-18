@@ -1,4 +1,4 @@
-"""done
+"""
 Que52. How Many Basic Types Of Functions Are Available In Python?
 Ans->
 # there are four basic types of functions based on their purpose

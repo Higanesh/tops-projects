@@ -1,4 +1,4 @@
-"""done
+"""
 Que7. Write a Python program to remove duplicates from a list. 
 """
 

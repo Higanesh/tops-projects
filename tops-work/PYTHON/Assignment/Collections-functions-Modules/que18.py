@@ -1,4 +1,4 @@
-"""done
+"""
 Que18. What is tuple? Difference between list and tuple.
 Ans-> a tuple is a collection data type that is used to store an ordered sequence of elements, similar to a list. However, unlike lists, tuples are immutable—meaning that once a tuple is created, its elements cannot be modified, added, or removed.
 

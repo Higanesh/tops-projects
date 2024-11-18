@@ -1,4 +1,4 @@
-"""done
+"""
 Que3. Differentiate between append () and extend () methods?
 Ans-> 1. append() Method
     Adds a single element to the end of the list.

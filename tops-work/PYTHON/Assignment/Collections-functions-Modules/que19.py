@@ -1,4 +1,4 @@
-"""done
+"""
 Que19. Write a Python program to create a tuple with different data types.
 """
 #There are three ways to create tuple in python
