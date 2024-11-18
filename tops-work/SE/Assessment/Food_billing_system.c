@@ -19,7 +19,7 @@
 #include <string.h>
 
 // Declare variables for the total amount and menu items
-int amt; 
+float amt; 
 char item[5][10] = {"PIZZA ","BURGER","DOSA  ","IDLI  ","SAMOSA"};
 int rate[] = {200, 150, 100, 50, 20}; // Corresponding prices for each item
 
@@ -55,7 +55,7 @@ int main() {
         if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
             // Check if input is an integer
             if (sscanf(buffer, "%d", &menu_choice) != 1) {
-                printf("Invalid input! Please enter a valid number.\n");
+                printf("Invalid input! Please enter a valid choice.\n");
                 //continue;
             }
             
@@ -79,22 +79,28 @@ int main() {
         // If a valid choice is made, prompt user for quantity and calculate the amount
         if(menu_choice <= sizeof(item) / sizeof(item[0]) && menu_choice > 0)
         {
-            printf("Enter Quantity\n");
-            scanf("%d", &qty);
-            if(qty <= 0)
-            {
-                printf("You have enter wrong quantity,Please enter quantity more than 0\n");
-            } 
-            else{
-                    // Add the calculated amount to the total
-                    amt += amount(qty, rate[menu_choice-1]);
-        
+                printf("Enter Quantity\n");
+                if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+                // Check if input is an integer
+                    if (sscanf(buffer, "%d", &qty) != 1) {
+                        printf("Invalid input! Please enter a valid quantity.\n");
+                        //continue;
+                    }
+                // scanf("%d", &qty);
+                else if(qty <= 0)
+                {
+                    printf("You have enter wrong quantity,Please enter quantity more than 0\n");
+                } 
+                else{
+                        // Add the calculated amount to the total
+                        amt += amount(qty, rate[menu_choice-1]);
+            
+                }
             }
         }
         
-        
         // Display the current total amount
-        printf("Amount: %d\n", amt);
+        printf("Amount: %.2f\n", amt);
         
         // Ask if the user wants to add something else
         printf("Do you want to add something else (Y/N)?\n");
@@ -106,7 +112,11 @@ int main() {
     } while(want_more == 'y' || want_more == 'Y'); // Continue if the user wants to add more items
     
     // Display the grand total
-    printf("Grand total : %d", amt);
+    float gd = amt + (amt * 5 / 100);
+    printf("Amount: %.2f\n",amt);
+    printf("CGST: 2.5\n");
+    printf("SGST: 2.5\n");
+    printf("Grand total : %.2f", gd);
     
     return 0;
 }
@@ -115,9 +125,9 @@ int main() {
 /*
 OUTPUT:
 
-D:\FULL STACK WEB DEVELOPMENT WITH PHP\tops\tops-projects\tops-work\SE\Assessment>gcc Food_billing_system.c -o a
+D:\WEB DEVELOPMENT WITH PYTHON\tops\tops-projects\tops-work\SE\Assessment>gcc Food_billing_system.c -o a.exe
 
-D:\FULL STACK WEB DEVELOPMENT WITH PHP\tops\tops-projects\tops-work\SE\Assessment>a
+D:\WEB DEVELOPMENT WITH PYTHON\tops\tops-projects\tops-work\SE\Assessment>a
 ------------MENU-------------
 ITEM NAME       PRICE
 -----------------------------
@@ -127,82 +137,35 @@ ITEM NAME       PRICE
 4.IDLI          50rs/pc
 5.SAMOSA        20rs/pc
 -----------------------------
-select your meal
-1
-you choose PIZZA
-Enter Quantity
-1
-Amount: 200
-you want to add something else (Y/N)
-y
-------------MENU-------------
-ITEM NAME       PRICE
------------------------------
-1.PIZZA         200rs/pc
-2.BURGER        150rs/pc
-3.DOSA          100rs/pc
-4.IDLI          50rs/pc
-5.SAMOSA        20rs/pc
------------------------------
-select your meal
-2
-you choose BURGER
-Enter Quantity
-1
-Amount: 350
-you want to add something else (Y/N)
-y
-------------MENU-------------
-ITEM NAME       PRICE
------------------------------
-1.PIZZA         200rs/pc
-2.BURGER        150rs/pc
-3.DOSA          100rs/pc
-4.IDLI          50rs/pc
-5.SAMOSA        20rs/pc
------------------------------
-select your meal
+Select your meal
 3
-you choose DOSA
+You chose DOSA
 Enter Quantity
-1
-Amount: 450
-you want to add something else (Y/N)
-y
-------------MENU-------------
-ITEM NAME       PRICE
------------------------------
-1.PIZZA         200rs/pc
-2.BURGER        150rs/pc
-3.DOSA          100rs/pc
-4.IDLI          50rs/pc
-5.SAMOSA        20rs/pc
------------------------------
-select your meal
-4
-you choose IDLI
-Enter Quantity
-1
-Amount: 500
-you want to add something else (Y/N)
-y
-------------MENU-------------
-ITEM NAME       PRICE
------------------------------
-1.PIZZA         200rs/pc
-2.BURGER        150rs/pc
-3.DOSA          100rs/pc
-4.IDLI          50rs/pc
-5.SAMOSA        20rs/pc
------------------------------
-select your meal
 5
-you choose SAMOSA
+Amount: 500.00
+Do you want to add something else (Y/N)?
+y
+------------MENU-------------
+ITEM NAME       PRICE
+-----------------------------
+1.PIZZA         200rs/pc
+2.BURGER        150rs/pc
+3.DOSA          100rs/pc
+4.IDLI          50rs/pc
+5.SAMOSA        20rs/pc
+-----------------------------
+Select your meal
+2
+You chose BURGER
 Enter Quantity
-1
-Amount: 520
-you want to add something else (Y/N)
+32
+Amount: 5300.00
+Do you want to add something else (Y/N)?
 n
-Grand total : 520
-D:\FULL STACK WEB DEVELOPMENT WITH PHP\tops\tops-projects\tops-work\SE\Assessment>
+Amount: 5300.00
+CGST: 2.5
+SGST: 2.5
+Grand total : 5565.00
+D:\WEB DEVELOPMENT WITH PYTHON\tops\tops-projects\tops-work\SE\Assessment>
+
 */
