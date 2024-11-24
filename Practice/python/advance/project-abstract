@@ -1,0 +1,92 @@
+Abstract:
+The online shopping website is an e-commerce platform that enables users to browse, select, and purchase a wide range of products through the internet. It provides a convenient and secure environment for consumers to shop from the comfort of their homes or any other location with internet access.
+
+Here are some key features of an online shopping website:
+
+1. User Registration and Profiles:
+Allows users to create accounts, save personal details, and manage addresses for faster checkouts.
+Option to log in via social media accounts for convenience.
+
+2. Product Search and Filters:
+Advanced search functionality that enables users to find products quickly.
+Filters for price, size, color, brand, rating, etc., to help users narrow down choices.
+
+3. Customer Reviews and Ratings:
+Users can view ratings and reviews from other customers, helping to make informed purchasing decisions.
+
+4. Shopping Cart and Wishlist:
+A cart that allows users to add, remove, or modify items before checkout.
+Option to create a wishlist for future purchases.
+
+5. Secure Payment Options:
+Multiple payment methods (credit/debit cards, e-wallets, net banking, cash on delivery).
+SSL encryption and secure payment gateways for safe transactions.
+
+
+Advantages of an Online Shopping Website:
+
+1. Convenience:
+Customers can shop anytime, anywhere, without the need to visit physical stores. This flexibility allows for 24/7 access.
+
+2. Wide Range of Products:
+Online stores typically offer a broader selection of products compared to physical stores, allowing customers to find items from different categories and brands in one place.
+
+3. Time-Saving:
+Shopping online eliminates the need to travel to stores, browse through aisles, or wait in long checkout lines. Users can make purchases quickly from the comfort of their homes.
+
+4. Secure Transactions:
+Many online shopping websites offer secure payment gateways, ensuring that personal and payment details are protected through encryption and authentication.
+
+5. Home Delivery:
+Products are delivered directly to customers' doorsteps, which is particularly useful for bulky items or people who may have mobility issues or time constraints.
+
+Disadvantages of an Online Shopping Website:
+
+1. Lack of Physical Interaction:
+Customers cannot physically touch, try, or examine products, which can be a significant disadvantage, especially for items like clothing or electronics where physical inspection is important.
+
+2. Shipping Costs:
+While some online stores offer free shipping, others may charge high shipping fees, which can make the total cost of a purchase higher than expected.
+
+3. Delayed Deliveries:
+Delivery times may vary, and in some cases, items can be delayed or lost in transit, leading to inconvenience for customers.
+
+4. No Immediate Gratification:
+Unlike in physical stores, customers cannot instantly take their purchases home, which can be disappointing if they need the product urgently.
+
+5. Overwhelming Choices:
+The vast range of products available can sometimes overwhelm consumers, making it harder to make decisions and increasing the likelihood of decision fatigue.
+
+
+Here’s a breakdown of common roles:
+
+1. Customer/User
+Description: The end user who browses and makes purchases on the site.
+Permissions:
+Browse products.
+Add items to the shopping cart.
+Checkout and place orders.
+Track order status.
+Manage personal information (address, payment methods, etc.).
+Review products.
+
+2. Admin
+Description: The highest-level user responsible for managing and maintaining the online store.
+Permissions:
+Full access to all backend features.
+Manage users, roles, and permissions.
+Manage product listings, inventory, pricing, and categories.
+View and process orders.
+Manage promotions, discounts, and coupons.
+Handle returns, refunds, and disputes.
+Monitor sales reports and analytics.
+Handle website settings, security, and updates.
+
+3. Seller/Vendor
+Description: A merchant or third-party seller who lists their products on the platform.
+Permissions:
+Add and manage their products.
+Set prices, inventory, and descriptions.
+View their own orders and shipping status.
+Manage customer reviews for their products.
+Access their sales data and reports.
