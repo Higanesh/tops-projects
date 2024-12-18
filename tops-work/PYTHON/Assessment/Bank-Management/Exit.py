@@ -1,4 +1,4 @@
 
 def exit():
-    print("Program End...")
-    return 0
+    print("Your operation is completed...")
+    return False
