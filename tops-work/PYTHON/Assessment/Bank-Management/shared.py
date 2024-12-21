@@ -1,0 +1,1 @@
+balance = {}    # A dictionary to store customer balances keyed by customer ID
