@@ -36,20 +36,30 @@ def switch_case():
 
             elif value == 2:
                 # View details of a specific customer by ID
-                user_ip_for_view = int(input("Enter customer id for view: "))
-                print(viewcust.viewcustomer(user_ip_for_view, all_customer_details))
+                try:
+                    user_ip_for_view = int(input("Enter customer id for view: "))
+                    print(viewcust.viewcustomer(user_ip_for_view, all_customer_details))
+                except ValueError:
+                    print("Invalid customer id,Please enter valid customer id")
+                except UnboundLocalError:
+                    print("No data found, Please first add data into bank")
 
             elif value == 3:
                 # Search for a customer by ID
                 try:
                     user_ip_for_search = int(input("Enter customer id for search: "))
+                    print(searchcust.searchcustomer(user_ip_for_search, all_customer_details))
                 except ValueError:
                     print("Invalid customer id,Please enter valid customer id")
-                print(searchcust.searchcustomer(user_ip_for_search, all_customer_details))
-
+                except UnboundLocalError:
+                    print("No data found, Please first add data into bank")
+                
             elif value == 4:
                 # View all customers and their details
-                viewallcust.viewallcustomer(all_customer_details)
+                try: 
+                    viewallcust.viewallcustomer(all_customer_details)
+                except UnboundLocalError:
+                    print("No data found, Please first add data into bank")
 
             elif value == 5:
                 # Calculate the total amount in the bank

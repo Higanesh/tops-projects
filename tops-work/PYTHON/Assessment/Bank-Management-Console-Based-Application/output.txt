@@ -1,0 +1,207 @@
+D:\WEB DEVELOPMENT WITH PYTHON\tops\tops-projects\tops-work\PYTHON\Assessment\Bank-Management>py main.py
+
+                WELCOME TO PYTHON BANK MANAGEMENT SYSTEM
+                Select your role
+
+                        1) Banker
+                        2) Customer
+                        3) Exit
+Choose your role: 1
+
+                Welcome to Bankers App
+                Operations Menu
+
+                        1) Add Customer
+                        2) View Customer
+                        3) Search Customer
+                        4) View all Customer
+                        5) Total amounts in Bank
+                        6) Main Menu
+Choose your role: 1
+Enter customer id: 1
+Enter customer name: Ganesh
+Enter opening balance: 2000
+Do you want to add another customer? (y for yes/n for no): y
+Enter customer id: 2
+Enter customer name: Sagar
+Enter opening balance: 4500
+Do you want to add another customer? (y for yes/n for no): y
+Enter customer id: 3
+Enter customer name: Rupesh
+Enter opening balance: 5000
+Do you want to add another customer? (y for yes/n for no): n
+
+                Welcome to Bankers App
+                Operations Menu
+
+                        1) Add Customer
+                        2) View Customer
+                        3) Search Customer
+                        4) View all Customer
+                        5) Total amounts in Bank
+                        6) Main Menu
+Choose your role: 2
+Enter customer id for view: 2
+{'cust_id': 2, 'name': 'Sagar', 'opening date': '2024-12-22 12:50:32'}
+
+                Welcome to Bankers App
+                Operations Menu
+
+                        1) Add Customer
+                        2) View Customer
+                        3) Search Customer
+                        4) View all Customer
+                        5) Total amounts in Bank
+                        6) Main Menu
+Choose your role: 3
+Enter customer id for search: 1
+Customer is available in the bank.
+{'cust_id': 1, 'name': 'Ganesh', 'opening date': '2024-12-22 12:50:23'}
+
+                Welcome to Bankers App
+                Operations Menu
+
+                        1) Add Customer
+                        2) View Customer
+                        3) Search Customer
+                        4) View all Customer
+                        5) Total amounts in Bank
+                        6) Main Menu
+Choose your role: 4
+All customer details:
+
+Customer ID: 1, Name: Ganesh, Opening date: 2024-12-22 12:50:23
+Customer ID: 2, Name: Sagar, Opening date: 2024-12-22 12:50:32
+Customer ID: 3, Name: Rupesh, Opening date: 2024-12-22 12:50:41
+
+                Welcome to Bankers App
+                Operations Menu
+
+                        1) Add Customer
+                        2) View Customer
+                        3) Search Customer
+                        4) View all Customer
+                        5) Total amounts in Bank
+                        6) Main Menu
+Choose your role: 5
+Enter initial balance in bank: 540000
+Enter withdrawal amount: 52100
+Enter deposit amount: 45000
+Today's initial balance: 540000.00
+Today's total withdrawal: 52100.00
+Today's total deposit: 45000.00
+Today's closing balance: 532900.00
+
+                Welcome to Bankers App
+                Operations Menu
+
+                        1) Add Customer
+                        2) View Customer
+                        3) Search Customer
+                        4) View all Customer
+                        5) Total amounts in Bank
+                        6) Main Menu
+Choose your role: 6
+
+                WELCOME TO PYTHON BANK MANAGEMENT SYSTEM
+                Select your role
+
+                        1) Banker
+                        2) Customer
+                        3) Exit
+Choose your role: 2
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 1
+Enter customer ID: 2
+Enter withdrawal amount: 500
+New balance after withdrawal: 4000.0
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 2
+Enter customer ID: 1
+Enter deposit amount: 5000
+New balance after deposit: 7000.0
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 3
+Enter customer ID: 3
+Current balance for customer ID 3: 5000.0
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 1
+Enter customer ID: 1
+Enter withdrawal amount: 10000
+Insufficient balance.
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 2
+Enter customer ID: 2
+Enter deposit amount: -500
+Deposit amount cannot be negative.
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 1
+Enter customer ID: 5
+Enter withdrawal amount: 500
+All customers and their respective account balance: {1: 7000.0, 2: 4000.0, 3: 5000.0}
+Customer ID not found.
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 3
+Enter customer ID: 5
+Customer ID not found.
+Welcome to Customers App
+        Operations Menu
+
+        1) Withdraw amt
+        2) Deposite amt
+        3) View balance
+        4) Main Menu
+Choose your role: 4
+
+                WELCOME TO PYTHON BANK MANAGEMENT SYSTEM
+                Select your role
+
+                        1) Banker
+                        2) Customer
+                        3) Exit
+Choose your role: 3
+Exiting the application... Thank you for visiting!
+
+D:\WEB DEVELOPMENT WITH PYTHON\tops\tops-projects\tops-work\PYTHON\Assessment\Bank-Management>

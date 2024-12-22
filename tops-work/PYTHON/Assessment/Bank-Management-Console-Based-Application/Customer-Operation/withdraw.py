@@ -6,6 +6,7 @@ def withdraw_amount(cust_id, amount):
     Deducts the withdrawal amount from the balance.
     """
     if cust_id not in balance:
+        print(f"All customers and their respective account balance: {balance}")
         raise ValueError("Customer ID not found.")
     if amount < 0:
         raise ValueError("Withdrawal amount cannot be negative.")

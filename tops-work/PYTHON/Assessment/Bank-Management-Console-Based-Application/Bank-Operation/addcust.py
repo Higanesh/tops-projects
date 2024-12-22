@@ -35,7 +35,7 @@ def addcustomer(customers):
 
         except ValueError:
             # Handle invalid input for customer ID (non-integer values)
-            print("Invalid value, please enter a valid customer ID.")
+            print("Invalid value, please enter a valid customer ID & opening balance.")
             continue
 
         # Append the customer's details dictionary to the list

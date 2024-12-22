@@ -3,13 +3,6 @@ from Customer import withdraw  # For withdrawal functionality
 from Customer import deposite  # For deposit functionality
 from Customer import viewbal   # For viewing account balance
 
-# Custom exception for handling insufficient balance
-class InsufficientAmount(Exception):
-    """
-    Custom exception raised when a withdrawal exceeds the available balance.
-    """
-    pass
-
 # Function to handle customer operations via a menu
 def switch_case():
     """
@@ -26,9 +19,10 @@ def switch_case():
 
         # Validate the user input for menu choice
         try:
+            
             value = int(input("Choose your role: "))             
         except ValueError:
-            print("Invalid Value")  # Handle non-integer inputs
+            print("Invalid Value, Enter a valid input")  # Handle non-integer inputs
             continue
 
         # Check if the input is within the valid range
@@ -36,47 +30,35 @@ def switch_case():
             # Handle withdrawal operation
             if value == 1:
                 try:
-                    cust_id = int(input("Enter customer ID for withdrawal: "))
+                    cust_id = int(input("Enter customer ID: "))
                     # Get withdrawal amount from the user
                     w_input = int(input("Enter withdrawal amount: "))
-
                     updated_balance = withdraw.withdraw_amount(cust_id, w_input)
                     print(f"New balance after withdrawal: {updated_balance}")
-                    # Check if the withdrawal amount is within the available balance
-                    # if w_input < main_bal:
-                    #     main_bal = withdraw.withdraw_amount(main_bal, w_input)  # Perform withdrawal
-                    #     print(f"{w_input}rs. is withdrawn successfully, your remaining balance is {main_bal}")
-                    #     print("Have a nice day")
-                    # else:
-                    #     # Raise custom exception if the amount exceeds balance
-                    #     raise InsufficientAmount("Insufficient amount")
-                except InsufficientAmount as ia:
-                    print(ia)  # Display error message for insufficient funds
-                    print("First check your account balance")
+    
+                except ValueError as e:
+                    print(e)
 
             # Handle deposit operation
             elif value == 2:
                 # Get deposit amount from the user
                 try:
-                    cust_id = int(input("Enter customer ID for deposit: "))
+                    cust_id = int(input("Enter customer ID: "))
                     d_input = int(input("Enter deposit amount: "))
                     updated_balance = deposite.deposite_amount(cust_id, d_input)
                     print(f"New balance after deposit: {updated_balance}")
-                except ValueError:
-                    print("Invalid amount, Please enter valid amount")
-                # main_bal = deposite.deposite_amount(main_bal, d_input)  # Perform deposit
-                # print(f"{d_input}rs. is deposited successfully, your remaining balance is {main_bal}")
-                # print("Have a nice day")
 
+                except ValueError as e:
+                    print(e)
+                
             # Handle balance view operation
             elif value == 3:
-                cust_id = int(input("Enter customer id to view balance: "))
-                current_bal = viewbal.view_balance(cust_id)
-                print(f"Current balance for customer ID {cust_id}: {current_bal}")
-                # main_bal = viewbal.view_balance(main_bal)  # View current account balance
-                # print(f"Account Balance: {main_bal}")
-                # print("Have a nice day")
-
+                try:
+                    cust_id = int(input("Enter customer ID: "))
+                    current_bal = viewbal.view_balance(cust_id)
+                    print(f"Current balance for customer ID {cust_id}: {current_bal}")
+                except ValueError as e:
+                    print(e)
             # Handle returning to the main menu
             elif value == 4:
                 return True  # Exit the customer menu and return to the main menu
