@@ -1,7 +1,7 @@
 # Import necessary functions and classes from Customer module
-from Customer import withdraw  # For withdrawal functionality
-from Customer import deposite  # For deposit functionality
-from Customer import viewbal   # For viewing account balance
+from Customer_Operation import withdraw  # For withdrawal functionality
+from Customer_Operation import deposite  # For deposit functionality
+from Customer_Operation import viewbal   # For viewing account balance
 
 # Function to handle customer operations via a menu
 def switch_case():

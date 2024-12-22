@@ -1,6 +1,6 @@
 # Import necessary modules
-from Banker import Banker  # Module for Banker-related operations
-from Customer import Customer  # Module for Customer-related operations
+from Bank_Operation import Banker  # Module for Banker-related operations
+from Customer_Operation import Customer  # Module for Customer-related operations
 import Exit  # Module to handle program exit
 
 # Initialize the main menu loop

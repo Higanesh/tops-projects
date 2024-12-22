@@ -1,9 +1,9 @@
 # Import specific functions from the Banker module
-from Banker import addcust  # For adding customers
-from Banker import viewcust  # For viewing customer details
-from Banker import searchcust  # For searching a customer
-from Banker import viewallcust  # For viewing all customer details
-from Banker import totalamtinbank  # For calculating total amounts in the bank
+from Bank_Operation import addcust  # For adding customers
+from Bank_Operation import viewcust  # For viewing customer details
+from Bank_Operation import searchcust  # For searching a customer
+from Bank_Operation import viewallcust  # For viewing all customer details
+from Bank_Operation import totalamtinbank  # For calculating total amounts in the bank
 
 # Function to handle Banker operations via a menu
 def switch_case():
