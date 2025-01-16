@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import mysql.connector
 from baseApp import *
+import re
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -117,40 +118,47 @@ class BillingApp(BaseApp):
         bill_menu_frame = LabelFrame(root, text='Bill Menu',font=('times new roman',15,'bold'), bg='gray20', fg = 'gold', bd = 8, relief = GROOVE)
         bill_menu_frame.pack(fill=X)
 
+        cosmetics_total = StringVar(value="0.0")
+        grocery_total = StringVar(value="0.0")
+        others_total = StringVar(value="0.0")
+        cosmetics_tax = StringVar(value="0.0")
+        grocery_tax = StringVar(value="0.0")
+        others_tax = StringVar(value="0.0")
+
         cosmeticspriceLabel = Label(bill_menu_frame, text="Total Cosmetics",font=('times new roman',15,'bold'),bg = 'gray20', fg = 'white')
         cosmeticspriceLabel.grid(row=0, column=0, pady=6, padx=10, sticky="w")
 
-        self.cosmetics_price_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=StringVar(value="0.0"))
+        self.cosmetics_price_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=cosmetics_total,state='readonly')
         self.cosmetics_price_entry.grid(row=0, column=1, pady=6, padx=10)
 
         grocerypriceLabel = Label(bill_menu_frame, text="Total Grocery",font=('times new roman',15,'bold'),bg = 'gray20', fg = 'white')
         grocerypriceLabel.grid(row=1, column=0, pady=6, padx=10, sticky="w")
 
-        self.grocery_price_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=StringVar(value="0.0"))
+        self.grocery_price_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=grocery_total,state='readonly')
         self.grocery_price_entry.grid(row=1, column=1, pady=6, padx=10)
 
         otherspriceLabel = Label(bill_menu_frame, text="Total Others",font=('times new roman',15,'bold'),bg = 'gray20', fg = 'white')
         otherspriceLabel.grid(row=2, column=0, pady=6, padx=10, sticky="w")
 
-        self.others_price_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=StringVar(value="0.0"))
+        self.others_price_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=others_total,state='readonly')
         self.others_price_entry.grid(row=2, column=1, pady=6, padx=10)
 
         cosmeticstaxLabel = Label(bill_menu_frame, text="Cosmetics Tax",font=('times new roman',15,'bold'),bg = 'gray20', fg = 'white')
         cosmeticstaxLabel.grid(row=0, column=2, pady=6, padx=10, sticky="w")
 
-        self.cosmetics_tax_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=StringVar(value="0.0"))
+        self.cosmetics_tax_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=cosmetics_tax,state='readonly')
         self.cosmetics_tax_entry.grid(row=0, column=3, pady=6, padx=10)
 
         grocerytaxLabel = Label(bill_menu_frame, text="Grocery Tax",font=('times new roman',15,'bold'),bg = 'gray20', fg = 'white')
         grocerytaxLabel.grid(row=1, column=2, pady=6, padx=10, sticky="w")
 
-        self.grocery_tax_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=StringVar(value="0.0"))
+        self.grocery_tax_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=grocery_tax,state='readonly')
         self.grocery_tax_entry.grid(row=1, column=3, pady=6, padx=10)
 
         otherstaxLabel = Label(bill_menu_frame, text="OthersTax",font=('times new roman',15,'bold'),bg = 'gray20', fg = 'white')
         otherstaxLabel.grid(row=2, column=2, pady=6, padx=10, sticky="w")
 
-        self.others_tax_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=StringVar(value="0.0"))
+        self.others_tax_entry = Entry(bill_menu_frame, font=('times new roman',15,'bold'), width=10, bd=5, textvariable=others_tax,state='readonly')
         self.others_tax_entry.grid(row=2, column=3, pady=6, padx=10)
 
         # Buttons
@@ -171,26 +179,29 @@ class BillingApp(BaseApp):
 
     def addCustDetails(self,name,phone):
         try:
-            qry = "insert into cust_details values(%s,%s,%s)"
-            value=(name,phone,0)
-            cursor.execute(qry,value)
-            mydb.commit()
-            # mydb.close()
-            messagebox.showinfo("Success", "Data added successfully!")
+            if(name.isalpha() and re.fullmatch(r"\d{10}",phone) is not None):
+                qry = "insert into cust_details values(%s,%s,%s)"
+                value=(name,phone,0)
+                cursor.execute(qry,value)
+                mydb.commit()
+                # mydb.close()
+                messagebox.showinfo("Success", "Data added successfully!")
+            else: raise ValueError("Enter valid data")
         except mysql.connector.Error as err:
             messagebox.showerror("Database Error", str(err))
-
-
+        except ValueError as err:
+            messagebox.showerror("Value Error", str(err))
+        
     def cosmeticsTotal(self,cosmetics_entries,cosmetics_price_entry,cosmetics_tax_entry,prices1):
         try:
             totalc = 0
-            for item, entry in cosmetics_entries.items():
+            for item, entry in self.cosmetics_entries.items():
                 Quantites = int(entry.get() or 0)  # Default to 0 if entry is empty
                 totalc += Quantites * prices1[item]
-            cosmetics_price_entry.delete(0, END)
-            cosmetics_price_entry.insert(0, f"{totalc:.2f}")
-            cosmetics_tax_entry.delete(0, END)
-            cosmetics_tax_entry.insert(0, f"{totalc * 5 / 100:.2f}")
+            self.cosmetics_price_entry = cosmetics_price_entry.delete(0, END)
+            self.cosmetics_price_entry.insert(0, f"{totalc:.2f}")
+            self.cosmetics_tax_entry.delete(0, END)
+            self.cosmetics_tax_entry.insert(0, f"{totalc * 5 / 100:.2f}")
         except ValueError:
             messagebox.showerror("Input Error", "Please enter valid numeric quantities.")
 
@@ -234,7 +245,8 @@ class BillingApp(BaseApp):
             # Fetch customer details
             customer_name = self.name_entry.get()
             customer_phone = self.phone_entry.get()
-            bill_no = self.bill_entry.get()
+            bill_no = cursor.lastrowid
+            # bill_no = self.bill_entry.get()
 
             if not customer_name or not customer_phone or not bill_no:
                 messagebox.showerror("Missing Details", "Please fill in all customer details!")
@@ -341,20 +353,11 @@ class BillingApp(BaseApp):
         self.root.quit()
 
 
-        # # Allow Bill Menu to scale
-        # self.bill_menu_frame.columnconfigure(1, weight=1)
-        # self.bill_menu_frame.columnconfigure(2, weight=1)
-        # self.bill_menu_frame.columnconfigure(3, weight=1)
-        # self.bill_menu_frame.columnconfigure(0, weight=1)
-
-
-        # # Make fields readonly where applicable
-        # self.cosmetics_price_entry.config(state='readonly')
-        # self.grocery_price_entry.config(state='readonly')
-        # self.others_price_entry.config(state='readonly')
-        # self.cosmetics_tax_entry.config(state='readonly')
-        # self.grocery_tax_entry.config(state='readonly')
-        # self.others_tax_entry.config(state='readonly')
+        # Allow Bill Menu to scale
+        self.bill_menu_frame.columnconfigure(1, weight=1)
+        self.bill_menu_frame.columnconfigure(2, weight=1)
+        self.bill_menu_frame.columnconfigure(3, weight=1)
+        self.bill_menu_frame.columnconfigure(0, weight=1)
 
         # Make bill text area non-editable
         # textarea.config(state='disabled')
@@ -364,6 +367,7 @@ class BillingApp(BaseApp):
 def main():
      root = Tk()
      app = BillingApp(root)
+     print(type(app))
      root.mainloop()
 
 if __name__ == "__main__":
