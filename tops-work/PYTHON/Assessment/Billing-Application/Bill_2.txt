@@ -1,0 +1,24 @@
+		Welcome to Ganesh Retail Store
+Bill No: 2
+Customer Name: Sagar
+Phone No: 7038049589
+
+============================================
+Items		Qty	Price	Total
+============================================
+Bath Soap		1	25	25
+Face Cream		1	45	45
+Face Wash		1	110	110
+Food Oil		1	45	45
+Daal		1	110	110
+Wheat		1	150	150
+Coke		1	45	45
+Fruti		1	110	110
+Nimkos		1	150	150
+============================================
+Sub Total				790.00
+Total Tax				39.50
+============================================
+Final Amount				829.50
+============================================
+Thank you for shopping with us!
