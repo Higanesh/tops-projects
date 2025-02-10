@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{%block title%} reg {%endblock%}
+
+
+
+{%block body%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-5 mx-auto card p-3 mt-3">
+            <h2 align="center">User Registration</h2>
+            <hr>
+            {% if messages %}
+            {% for message in messages %}
+            {%if "error" in message.tags%}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+            {%else%}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+            {%endif%}
+            {% endfor %}
+            {% endif %}
+
+            <form action="reg" method="POST">
+                {%csrf_token%}
+                <div class="form-group">
+                    <label for="uname">Username</label>
+                    <input type="text" name="uname" id="uname" placeholder="Enter username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Enter email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="pass">Password</label>
+                    <input type="password" name="password" id="pass" placeholder="Enter Password" class="form-control">
+                </div>
+                
+                <p class="text-center mt-3 mb-0">
+                    <input type="submit" class="btn btn-success">
+                    <input type="reset" class="btn btn-primary">
+                </p>
+                <p class="text-center mt-3 mb-0">
+                    Already registered? <a href="{% url 'login_user' %}" class="text-decoration-none">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

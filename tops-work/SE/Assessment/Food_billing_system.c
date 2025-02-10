@@ -33,7 +33,7 @@ int main() {
     char buffer[100]; // Buffer to hold input as a string
     int qty, menu_choice; // Variables to store quantity and user's choice
     char want_more; // Variable to store user's decision to continue or not
-    
+
     do {
         // Display the menu
         printf("------------MENU-------------\n");

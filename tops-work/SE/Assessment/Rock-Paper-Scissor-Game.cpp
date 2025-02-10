@@ -17,7 +17,7 @@ void displayChoice(int choice) {
 int main() {
     string name;
     int no_of_rounds, current_round = 1, person_score = 0, computer_score = 0, person_choice, computer_choice;
-
+    
     // Display a separator and prompt for the user's name
     cout << endl << "--*--*--*--*--*--*--*--*--*--*" << endl;
     cout << "             NAME" << endl;
