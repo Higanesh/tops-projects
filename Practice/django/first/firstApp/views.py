@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 def dashboard(request):
     return render(request,'dashboard.html')
 
+@login_required(login_url="userLogin")
 def index(request):
     alluser = MyUser.objects.all()
     return render(request,'index.html',{"users":alluser})
@@ -15,14 +16,23 @@ def index(request):
 def addDetails(request):
     if request.method == 'POST':
         # Get data from the form
+        id = request.POST['id']
         fname = request.POST['firstname']
         mname = request.POST['middlename']
         lname = request.POST['lastname']
 
-        user = MyUser.objects.create(fname=fname, mname=mname, lname=lname)
-        user.save()  
+        if id:
+            cuser = MyUser.objects.get(pk=id)
+            cuser.fname = fname
+            cuser.mname = mname
+            cuser.lname = lname
+            cuser.save()
+        else:
+
+            MyUser.objects.create(fname=fname, mname=mname, lname=lname)
+        
         return redirect('index')  # Redirect to home page after saving
-    return render(request, 'index.html')
+    
 
 def deleteDetails(request,id):
     user = MyUser.objects.get(pk=id)

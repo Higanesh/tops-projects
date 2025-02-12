@@ -133,15 +133,15 @@
             <h2>Personal Information</h2>
             <form action="{%url 'addDetails'%}" method="POST">
                 {% csrf_token %}
-
+                <input type="hidden" id="id" name="id" value="{{u.id}}"><br>
                 <label for="firstname">First Name:</label>
-                <input type="text" id="firstname" name="firstname" required><br>
+                <input type="text" id="firstname" name="firstname" value="{{u.fname}}" required><br>
 
                 <label for="middlename">Middle Name:</label>
-                <input type="text" id="middlename" name="middlename" required><br>
+                <input type="text" id="middlename" name="middlename" value="{{u.mname}}" required><br>
 
                 <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" name="lastname" required><br>
+                <input type="text" id="lastname" name="lastname" value="{{u.lname}}" required><br>
 
                 <button type="submit">Submit</button>
             </form>

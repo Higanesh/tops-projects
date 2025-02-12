@@ -12,12 +12,25 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">My Website</a>
             </div>
+            <div>
+                {%if user.username%}
+              <span class="flex-c-m trans-04 p-lr-25">
+                Welcome , {{user.username}}
+              </span>
+              {%endif%}
+              </div>
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
                 <li><a href="{% url 'userReg' %}">Register</a></li>
-                <li><a href="{% url 'userLogin' %}">Login</a></li>
-                <li><a href="{% url 'userlogout' %}">Logout</a></li>
+                {%if user.username%}
+                    <li><a href="{% url 'userlogout' %}">Logout</a></li>
+                {%else%}
+                    <li><a href="{% url 'userLogin' %}">Login</a></li>
+                    
+                {%endif%}
+                <li><a href="{% url 'index' %}">Apply</a></li>
             </ul>
+            
         </div>
     </nav>
 
