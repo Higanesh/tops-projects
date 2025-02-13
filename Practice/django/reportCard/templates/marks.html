@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Student Marksheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: #ffffff;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .marksheet-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .marksheet-header h1 {
+            font-size: 36px;
+            color: #3c6e71;
+        }
+        
+        .marksheet-header p {
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .student-details table {
+            width: 100%;
+            margin-bottom: 30px;
+            border-collapse: collapse;
+        }
+        
+        .student-details th, .student-details td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        .student-details th {
+            background-color: #3c6e71;
+            color: #ffffff;
+        }
+        
+        .student-details td {
+            background-color: #f2f2f2;
+        }
+        
+        .marks-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .marks-table th, .marks-table td {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .marks-table th {
+            background-color: #3c6e71;
+            color: white;
+        }
+        
+        .marks-table td {
+            background-color: #f9f9f9;
+        }
+        
+        .marks-table tr:nth-child(even) {
+            background-color: #f1f1f1;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .footer p {
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .footer p:last-child {
+            font-weight: bold;
+            color: #4caf50;  /* Green color for Pass status */
+        }
+    </style>       
+
+</head>
+<body>
+    <div class="container">
+        <div class="marksheet-header">
+            <h1>Engineering Student Marksheet</h1>
+            <p>Semester: 5</p>
+        </div>
+
+        <div class="student-details">
+            <table>
+                <tr>
+                    <th>Student Name:</th>
+                    <td>Ganesh Gayakwad</td>
+                </tr>
+                <tr>
+                    <th>Seat Number:</th>
+                    <td>12345</td>
+                </tr>
+                <tr>
+                    <th>Department:</th>
+                    <td>Computer Science</td>
+                </tr>
+                <tr>
+                    <th>University:</th>
+                    <td>XYZ University</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="marks-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.no</th>
+                        <th>Subject</th>
+                        <th>Max Marks</th>
+                        <th>Obtained Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for i in studentMarks%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.subject.subject_name}}</td>
+                        <td>100</td>
+                        <td>{{i.marks}}</td>  
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>Overall Percentage: <span id="percentage">{{percentage|floatformat:2}}%</span></p>
+            <p>Status: <span id="status">{{status}}</span></p>
+        </div>
+    </div>
+</body>
+</html>

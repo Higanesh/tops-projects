@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from shoppingApp.models import *
 from django.contrib.auth.models import User,auth
+from django.contrib import messages
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
 import re
@@ -19,7 +20,7 @@ def blog_single(request):
 def blog(request):
     return render(request,"blog.html")
 
-@login_required(login_url="login")
+@login_required(login_url="login_user")
 def cart(request):
     return render(request,"cart.html")
 
@@ -38,37 +39,38 @@ def product_details(request):
 
 def login_user(request):
     if request.method=="POST":
-        username = request.POST['uname']
-        password = request.POST['password']
+        username = request.POST.get("uname")
+        password = request.POST.get("pass")
         
-        user = auth.authenticate(username=username,password=password)
-        if user is not None:
-             auth.login(request,user)
-             return redirect(request,"{%url index.html%}")
-        else:
+        user = authenticate(username=username,password=password)
+        if user == None:
+            messages.add_message(request,messages.ERROR,"Invalid Credentials !!")
             return render(request,"login.html")
-    return render(request,"login.html")
+        else:
+            login(request,user)
+            return redirect("index")
+    return render(request,'login.html')
 
 def reg(request):
      
-    # pattern = "^[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,4}$"
+    pattern = "^[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,4}$"
 
     if request.method == "POST":
-        username = request.POST['uname']
-        email = request.POST['email']
-        password = request.POST['password']
+        username = request.POST.get("uname")
+        email = request.POST.get("email")
+        password = request.POST.get("pass")
 
-        # result = re.match(email,pattern)
-        # if result == None:
-        #     return render(request,'reg.html',{"err" : "Invalid Email formate !!!"})
+        result = re.match(email,pattern)
+        if result == None:
+            return render(request,'reg.html',{"err" : "Invalid Email formate !!!"})
         
-        # if User.objects.filter(username=username).exists():
-        #      return render(request,'reg.html',{"err" : "User alredy exist !!!"})
+        if User.objects.filter(username=username).exists():
+             return render(request,'reg.html',{"err" : "User alredy exist !!!"})
         
         user = User.objects.create_user(username=username,email=email,password=password)
-        # user.set_password(password)
+        user.set_password(password)
         user.save()
-        return redirect(request,'login.html',{"msg" : "Registration successfully !!!"})
+        return redirect(request,'login.html',{"msg" : "Registration successful !!!"})
     else:
         return render(request,"reg.html")
 
@@ -76,3 +78,8 @@ def reg(request):
 def userlogout(request):
     logout(request)
     return render(request,'index.html')
+
+
+
+
+
