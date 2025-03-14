@@ -103,33 +103,61 @@
             font-weight: bold;
             color: #4caf50;  /* Green color for Pass status */
         }
+
+        .overall table {
+            width: 100%;
+            margin-bottom: 30px;
+            border-collapse: collapse;
+        }
+        
+        .overall th, .student-details td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        .overall th {
+            background-color: #3c6e71;
+            color: #ffffff;
+        }
+        
+        .overall td {
+            background-color: #f2f2f2;
+        }
     </style>       
 
 </head>
 <body>
     <div class="container">
         <div class="marksheet-header">
-            <h1>Engineering Student Marksheet</h1>
-            <p>Semester: 5</p>
+            <h1>Savitribai Phule Pune University</h1>
+            {% comment %} <p>Semester: 5</p> {% endcomment %}
         </div>
 
         <div class="student-details">
             <table>
                 <tr>
                     <th>Student Name:</th>
-                    <td>Ganesh Gayakwad</td>
+                    <td>{{std.firstname}} {{std.lastname}}</td>
+                </tr>
+                <tr>
+                    <th>Age:</th>
+                    <td>{{std.age}}</td>
                 </tr>
                 <tr>
                     <th>Seat Number:</th>
-                    <td>12345</td>
+                    <td>{{std.student_id.student_id}}</td>
                 </tr>
                 <tr>
                     <th>Department:</th>
-                    <td>Computer Science</td>
+                    <td>{{std.dept.deptname}}</td>
                 </tr>
                 <tr>
-                    <th>University:</th>
-                    <td>XYZ University</td>
+                    <th>Email:</th>
+                    <td>{{std.email}}</td>
+                </tr>
+                <tr>
+                    <th>Rank:</th>
+                    <td>{{count}}</td>
                 </tr>
             </table>
         </div>
@@ -158,8 +186,25 @@
         </div>
 
         <div class="footer">
-            <p>Overall Percentage: <span id="percentage">{{percentage|floatformat:2}}%</span></p>
-            <p>Status: <span id="status">{{status}}</span></p>
+
+            <div class="overall">
+                <table>
+                    <tr>
+                        <th>Total Marks:</th>
+                        <td>600</td>
+                        <th>Obtained Marks:</th>
+                        <td>{{total.total}}</td>
+                    </tr>
+                   
+                    <tr>
+                        <th>Overall Percentage:</th>
+                        <td>{{percentage|floatformat:2}}%</td>
+                        <th>Status: </th>
+                        <td>{{status}}</td>
+                    </tr>
+                    
+                </table>
+            </div>
         </div>
     </div>
 </body>

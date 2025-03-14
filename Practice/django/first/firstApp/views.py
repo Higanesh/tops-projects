@@ -1,9 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from firstApp.models import MyUser
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+import requests
+import random
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import JsonResponse
+from .utils import send_sms
+
+
+
 
 def dashboard(request):
     return render(request,'dashboard.html')
@@ -79,8 +88,43 @@ def userlogout(request):
     return render(request,'dashboard.html')
     
 
+def otp(request):
+    return render(request,"otp.html")
+
+def sendsms(request):
+
+    if request.method == "POST":
+        phone = request.POST.get("phone")
+        
+    
+        if not phone:
+            return JsonResponse({"status": "error", "message": "Phone number is required"})
+        
+        message = "Your OTP is 123456"
+        response = send_sms(phone, message)
+        return JsonResponse({"status": "success", "response": response})
+    
+    return JsonResponse({"status": "error", "message": "Invalid request"})
 
     
+
+
+    
+
+def email(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        send_mail(subject, message, 'settings.EMAIL_HOST_USER', [email],fail_silently=False)
+    return render(request,"email.html")
+    
+
+
+
+    
+
 
 
 

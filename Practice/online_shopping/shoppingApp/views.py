@@ -52,27 +52,49 @@ def login_user(request):
     return render(request,'login.html')
 
 def reg(request):
-     
-    pattern = "^[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,4}$"
-
-    if request.method == "POST":
-        username = request.POST.get("uname")
+     if request.method == 'POST':
+        uname = request.POST.get("uname")
         email = request.POST.get("email")
         password = request.POST.get("pass")
 
-        result = re.match(email,pattern)
-        if result == None:
-            return render(request,'reg.html',{"err" : "Invalid Email formate !!!"})
+        if User.objects.filter(username = uname).exists():
+            messages.add_message(request,messages.ERROR,"Username already exist !!")
+            return redirect(request,"reg.html")
         
-        if User.objects.filter(username=username).exists():
-             return render(request,'reg.html',{"err" : "User alredy exist !!!"})
-        
-        user = User.objects.create_user(username=username,email=email,password=password)
+        user = User(username=uname,email=email)
         user.set_password(password)
         user.save()
-        return redirect(request,'login.html',{"msg" : "Registration successful !!!"})
-    else:
-        return render(request,"reg.html")
+        messages.add_message(request,messages.SUCCESS,"Registration Successful !!")
+        return render(request,'reg.html')
+     
+     else:
+         return render(request,"reg.html")
+     
+
+
+
+
+
+    # pattern = "^[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,4}$"
+
+    # if request.method == "POST":
+    #     uname = request.POST.get("uname")
+    #     email = request.POST.get("email")
+    #     password = request.POST.get("pass")
+
+    #     result = re.match(email,pattern)
+    #     if result == None:
+    #         return render(request,'reg.html',{"err" : "Invalid Email formate !!!"})
+        
+    #     if User.objects.filter(username=uname).exists():
+    #          return render(request,'reg.html',{"err" : "User alredy exist !!!"})
+        
+    #     user = User.objects.create_user(username=uname,email=email)
+    #     user.set_password(password)
+    #     user.save()
+    #     return redirect(request,'login.html',{"msg" : "Registration successful !!!"})
+    # else:
+    #     return render(request,"reg.html")
 
 
 def userlogout(request):

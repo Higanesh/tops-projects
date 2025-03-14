@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# If you're using an actual email service (like Gmail), you can set:
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ganeshngayakwad@gmail.com'
+EMAIL_HOST_PASSWORD = 'znqs opuv rbnf nmno'
+# DEFAULT_FROM_EMAIL = 'admin@gmail.com'
+
 
 # Application definition
 
@@ -117,6 +126,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# settings.py
+MSG91_AUTH_KEY = "442879ARe7ljS00EC67c5e32bP1"
+MSG91_SENDER_ID = "sakshiganesh"
+MSG91_ROUTE = "4"  # Transactional route, use '1' for promotional
+MSG91_COUNTRY_CODE = "91"  # Change as per your country
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
