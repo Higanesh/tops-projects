@@ -20,18 +20,18 @@ def viewstudents(request):
     print(s_data)
     return Response(data=s_data.data)
 
-# @api_view(['put'])
-# def updatestudents(request,id):
-#     try:
-#         student = Student.objects.get(pk=id)
-#         ser = StudentSerializer(student,request.data)
-#         if not ser.is_valid():
-#             return Response({'status':'202','errors':ser.errors,'message':"something went wrong"})
-#         ser.save()
-#         return Response({'status':'200',"data":ser.data,'message':"Stduent updated successfully"})
+@api_view(['put'])
+def updatestudents(request,id):
+    try:
+        student = Student.objects.get(pk=id)
+        ser = StudentSerializer(student,request.data)
+        if not ser.is_valid():
+            return Response({'status':'202','errors':ser.errors,'message':"something went wrong"})
+        ser.save()
+        return Response({'status':'200',"data":ser.data,'message':"Stduent updated successfully"})
     
-#     except Exception as e:
-#         return Response({'status':"404",'message':'Student Not found'})
+    except Exception as e:
+        return Response({'status':"404",'message':'Student Not found'})
 
 @api_view(['delete'])
 def deletestudents(request,id):
@@ -45,7 +45,7 @@ def deletestudents(request,id):
     
 
 @api_view(['patch'])
-def updatestudents(request,id):
+def updatesinglestudent(request,id):
         try:
             student = Student.objects.get(pk=id)
             ser =  StudentSerializer(student,request.data,partial=True)

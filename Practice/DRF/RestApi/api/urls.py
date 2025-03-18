@@ -6,4 +6,5 @@ urlpatterns = [
     path("viewstudents/",viewstudents,name="viewstudents"),
     path("updatestudents/<id>",updatestudents,name="updatestudents"),
     path("deletestudents/<id>",deletestudents,name="deletestudents"),
+    path("updatesinglestudent/<id>",updatesinglestudent,name="updatesinglestudent"),
 ]
