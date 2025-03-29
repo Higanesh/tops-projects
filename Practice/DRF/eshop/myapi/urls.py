@@ -1,11 +1,18 @@
 from django.urls import path
 from myapi.views import *
+from rest_framework.authtoken import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path("addcategory/",addcategory,name="addcategory"),
-    path("viewcategory/",viewcategory,name="viewcategory"),
-    path("updatecategory/<id>",updatecategory,name="updatecategory"),
-    path("deletecategory/<id>",deletecategory,name="deletecategory"),
+    path("categories",CategoryAPI.as_view()),
+    # path("products",ProductApI.as_view()),
+    path("users",registerUser,name="users"),
+    path('api-token-auth/', views.obtain_auth_token),
+    # path("addcategory/",addcategory,name="addcategory"),
+    # path("viewcategory/",viewcategory,name="viewcategory"),
+    # path("updatecategory/<id>",updatecategory,name="updatecategory"),
+    # path("deletecategory/<id>",deletecategory,name="deletecategory"),
     path("addproduct/",addproduct,name="addproduct"),
     path("viewproduct/",viewproduct,name="viewproduct"),
     path("updateproduct/<id>",updateproduct,name="updateproduct"),
@@ -24,3 +31,8 @@ urlpatterns = [
     path("deleteorderitems/<id>",deleteorderitems,name="deleteorderitems"),
     path("productbycategory/<id>",productbycategory,name="productbycategory"),
 ]
+
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

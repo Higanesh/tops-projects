@@ -1,50 +1,100 @@
 from django.shortcuts import render,HttpResponse
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,APIView
 from rest_framework.response import Response
 from myapi.models import *
 from myapi.serializer import *
+from rest_framework.authtoken.models import Token
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
-@api_view(['post'])
-def addcategory(request):
-    try:
-        category = CategorySerializer(data = request.data)
-        if not category.is_valid():
-            return Response({'status':'202','message':'Something wrong!','errors':category.errors})
-        category.save()
-        return Response({'status':'200','message':'Category added successfully !'})
 
-    except Exception as e:
-        return Response({'message':'Something went wrong'})
+@api_view(["post"])
+def registerUser(request):
+    data = UserSerializer(data=request.data)
+    if not data.is_valid():
+            return Response({"status":"202","Errors":data.errors,"message":"something went wrong"})
+    data.save()
+    
+    return Response({"message":"Data Inserted","data":data.data})
 
-@api_view(['get'])
-def viewcategory(request):
-    allcategory = Category.objects.all()
-    c_data = CategorySerializer(allcategory,many=True)
-    return Response(data=c_data.data)
+class CategoryAPI(APIView):
 
-@api_view(['put'])
-def updatecategory(request,id):
-    try:
-        category = Category.objects.get(pk=id)
-        c_data = CategorySerializer(category,request.data)
-        if not c_data.is_valid():
-            return Response({'status':'202','message':'Something wrong!','errors':c_data.errors})
-        c_data.save()
-        return Response({'status':'200','message':'Category updated successfully !'})
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
-    except Exception as e:
-        return Response({'message':'Something went wrong'})
 
-@api_view(['delete'])
-def deletecategory(request,id):
-    try:
-        category = Category.objects.get(pk=id)
-        category.delete()
-        return Response({'status':"200",'message':'Category deleted successfully'})
 
-    except Exception as e:
-        return Response({'status':"404",'message':'Category Not found'})
+    def get(self, request):
+        
+        allCategories = Category.objects.all()
+        data = CategorySerializer(allCategories,many=True)
+        return Response(data.data)
+    
+    def post(self, request):
+        data = CategorySerializer(data=request.data)
+        if not data.is_valid():
+            return Response({"status":"202","Errors":data.errors,"message":"something went wrong"})
+        data.save()
+        return Response({"message":"Data Inserted","data":data.data})
+    
+    def put(self, request):
+        dataToUpdate = Category.objects.get(pk=request.data['id'])
+        updatedData = CategorySerializer(dataToUpdate,request.data)
+        if not updatedData.is_valid():
+              return Response({"status":"202","Errors":updatedData.errors,"message":"something went wrong"})
+        updatedData.save()
+        return Response({"message":"Data Updated","data":updatedData.data})
+    
+    def delete(self, request):
+        try :
+            dataTodelete = Category.objects.get(pk=request.data['id'])
+            dataTodelete.delete()
+            return Response({"message":"Data Deleted"})
+        except Exception as e:
+            return Response({"mesaage":str(e)})
+        
+
+# @api_view(['post'])
+# def addcategory(request):
+#     try:
+#         category = CategorySerializer(data = request.data)
+#         if not category.is_valid():
+#             return Response({'status':'202','message':'Something wrong!','errors':category.errors})
+#         category.save()
+#         return Response({'status':'200','message':'Category added successfully !'})
+
+#     except Exception as e:
+#         return Response({'message':'Something went wrong'})
+
+# @api_view(['get'])
+# def viewcategory(request):
+#     allcategory = Category.objects.all()
+#     c_data = CategorySerializer(allcategory,many=True)
+#     return Response(data=c_data.data)
+
+# @api_view(['put'])
+# def updatecategory(request,id):
+#     try:
+#         category = Category.objects.get(pk=id)
+#         c_data = CategorySerializer(category,request.data)
+#         if not c_data.is_valid():
+#             return Response({'status':'202','message':'Something wrong!','errors':c_data.errors})
+#         c_data.save()
+#         return Response({'status':'200','message':'Category updated successfully !'})
+
+#     except Exception as e:
+#         return Response({'message':'Something went wrong'})
+
+# @api_view(['delete'])
+# def deletecategory(request,id):
+#     try:
+#         category = Category.objects.get(pk=id)
+#         category.delete()
+#         return Response({'status':"200",'message':'Category deleted successfully'})
+
+#     except Exception as e:
+#         return Response({'status':"404",'message':'Category Not found'})
 
 @api_view(['post'])
 def addproduct(request):
