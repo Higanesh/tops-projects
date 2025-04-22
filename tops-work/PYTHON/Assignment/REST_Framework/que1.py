@@ -1,4 +1,0 @@
-""""
-Que1. Write a Python program that consumes a simple public API (e.g., a joke API).
-"""
-
