@@ -11,9 +11,6 @@ from django.conf import settings
 from django.http import JsonResponse
 from .utils import send_sms
 
-
-
-
 def dashboard(request):
     return render(request,'dashboard.html')
 
