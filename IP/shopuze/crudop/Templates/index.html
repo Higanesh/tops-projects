@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD OP</title>
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+            padding-top: 50px;
+        }
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-md-offset-3 form-container">
+            <h2 class="text-center">Add Employee</h2>
+            <form action="{% url 'addemp' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{editemp.id}}">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name" value="{{editemp.name}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" name="age" id="age" placeholder="Enter your age" value="{{editemp.age}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email" value="{{editemp.email}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="img">Image</label>
+                    <input type="file" class="form-control" name="img" id="img">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="text-center">Employee List</h2>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in emps %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.age }}</td>
+                    <td>{{ emp.email }}</td>
+                    <td>
+                        {% if emp.img %}
+                        <img src="{{ emp.img.url }}" alt="img">
+                        {% else %}
+                        No Image
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'updateemp' emp.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'delemp' emp.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="6" class="text-center">No Employees Found</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
