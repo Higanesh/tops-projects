@@ -12,18 +12,15 @@ def addemp(request):
         name = request.POST.get('name')
         age = request.POST.get('age')
         email = request.POST.get('email')
-        img = request.FILES.get('img')
         
         if(id):
             currentemp = Employee.objects.get(pk=id)
             currentemp.name = name
             currentemp.age = age
             currentemp.email = email
-            if request.FILES.get('img'):
-                currentemp.img = request.FILES['img'] 
             currentemp.save()
         else:
-            Employee.objects.create(name=name, age=age, email=email, img=img)
+            Employee.objects.create(name=name, age=age, email=email)
     return redirect('index')
     
 def updateemp(request,id):

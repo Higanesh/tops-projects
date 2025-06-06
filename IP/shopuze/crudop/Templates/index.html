@@ -48,11 +48,6 @@
                     <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email" value="{{editemp.email}}">
                 </div>
 
-                <div class="form-group">
-                    <label for="img">Image</label>
-                    <input type="file" class="form-control" name="img" id="img">
-                </div>
-
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Submit</button>
                     <button type="reset" class="btn btn-warning">Reset</button>
@@ -70,7 +65,6 @@
                     <th>Name</th>
                     <th>Age</th>
                     <th>Email</th>
-                    <th>Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -81,13 +75,6 @@
                     <td>{{ emp.name }}</td>
                     <td>{{ emp.age }}</td>
                     <td>{{ emp.email }}</td>
-                    <td>
-                        {% if emp.img %}
-                        <img src="{{ emp.img.url }}" alt="img">
-                        {% else %}
-                        No Image
-                        {% endif %}
-                    </td>
                     <td>
                         <a href="{% url 'updateemp' emp.id %}" class="btn btn-primary btn-sm">Edit</a>
                         <a href="{% url 'delemp' emp.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
